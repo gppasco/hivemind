@@ -1,0 +1,24 @@
+{% extends "puzzles/layout.html" %}
+
+{% block body %}
+<h2>Create a Puzzle</h2>
+
+Enter letters to create your own Spelling Bee puzzle! The "Necessary letter" must be a single letter, and the outer letters must be a six-letter string.
+All letters must be distinct. (Note that normally, Spelling Bees require for there to be at least one pangram; this rule isn't enforced for HiveMind, but
+pangrams are encouraged) <br><br>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<form action="{% url 'create_puzzle'%}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit">
+</form>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "puzzles/layout.html" %}
+{% load customfunc %}
+
+{% block body %}
+    <h2>All Puzzles</h2>
+
+    {% for puzzle in puzzles %}
+    <div class="bee-block">
+        <a href="{% url 'render_puz' puzzle.id %}">Puzzle</a>: <b class="necessary"">{{puzzle.centerLetter}}</b>{{puzzle.outerLetters}}
+        {% if user.is_authenticated %}
+            (Your score: {% score request.user puzzle.id %})
+        {% endif %}
+    </div>
+    {% endfor %}
+{% endblock %}

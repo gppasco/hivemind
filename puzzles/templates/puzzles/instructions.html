@@ -1,0 +1,52 @@
+{% extends "puzzles/layout.html" %}
+
+{% block body %}
+<h2>Intro to HiveMind</h2>
+
+Thanks for playing HiveMind! This page has all the information needed to get started. <br><br>
+
+<h4><b>Making Words</b></h4>
+The basic setup of HiveMind is that players are given a set of 7 letters. Players must then spell words (at least 4
+letters long) using only those 7 letters, repeating letters if necessary.
+In addition, in each puzzle, one letter is given in yellow; this letter MUST be used at least once in every word spelled
+for that puzzle. We can see these rules in effect using the sample set of letters <b class="necessary">E</b>GILNPS:
+<ul>
+    <li>
+        SP<b class="necessary">E</b>LLING, L<b class="necessary">E</b>GS,
+        <b class="necessary">E</b>LLIPS<b class="necessary">E</b>, and
+        SL<b class="necessary">E</b><b class="necessary">E</b>PL<b class="necessary">E</b>SSN<b class="necessary">E</b>SS
+        would all be valid words.
+    </li>
+    <li>
+        P<b class="necessary">E</b>N would be invalid (too short).
+    </li>
+    <li>
+        SLIPPING would be invalid (doesn't use the center letter).
+    </li>
+    <li>
+        G<b class="necessary">E</b><b class="necessary">E</b><b class="necessary">E</b><b class="necessary">E</b>GGL would
+        be invalid (not a word).
+    </li>
+
+
+
+</ul>
+(Words are checked for validity using the
+<a href="https://dictionaryapi.dev/">Free Dictionary API</a>).
+<br><br>
+
+<h4><b>Scoring</b></h4>
+Words are scored depending on length:
+<ul>
+    <li>4-letter words are worth 1 point.</li>
+    <li>Words longer than 4 letters are scored at 1 point per letter.</li>
+</ul>
+A 7-point bonus is also given if the word is a "pangram" (i.e. uses all seven of the given letters).
+For example, going back to the example set of letters <b class="necessary">E</b>GILNPS:
+<ul>
+    <li>L<b class="necessary">E</b>GS: 4 points.</li>
+    <li><b class="necessary">E</b>LLIPS<b class="necessary">E</b>: 7 points.</li>
+    <li>SP<b class="necessary">E</b>LLING: 15 points (8 for length + pangram bonus of 7)</li>
+</ul>
+
+{% endblock %}

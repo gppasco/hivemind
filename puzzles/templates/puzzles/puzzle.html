@@ -1,0 +1,31 @@
+{% extends "puzzles/layout.html" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="puz-content col-5">
+            <div class="letter-display-outer">
+                <div class="letter-display">
+                    <span class="boxed primary" id="{{center}}"><b>{{center}}</b></span>
+                    {% for letter in outer %}
+                        <span class="boxed" id="{{letter}}">{{letter}}</span>
+                    {% endfor %}
+                    <br>
+                </div>
+            </div>
+            <div class="word-submit">Enter
+                <input id="guess-field" type="text" autofocus>
+                <button class="submit-button" id="submit-{{id}}">Submit</button>
+            </div>
+            <div id="message-div"></div>
+        </div>
+        <div class="stats col-5">
+            <h4 style="display:inline">Score</h4>: <span class="score-span"></span><hr>
+            <h4>Found Words</h4>
+            <div class="found-words"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
